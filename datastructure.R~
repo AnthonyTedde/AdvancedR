@@ -1,0 +1,64 @@
+dbl_var <- c(1,2.5, 4.5)
+int_var <- c(1L, 6L, 10L)
+log_var <- xc(T, F, T, F)
+char_var <- c("This are", "some strings")
+
+### Attributes
+## Names
+# Set name from existing objet:
+x <- c(1, 2, 3, 4, 5)
+y <- x
+names(y) <- c('a', 'b', 'c', 'd', 'e')
+# or, directly:
+w <- setNames(x, c('a', 'b', 'c', 'd', 'e'))
+
+### Factor
+x <- factor(c("a", "b", "c", "b"))
+y <- factor(letters[1:5])
+levels(x)
+# Try to combine factor:
+c(x, y) # <- Only combine the index (1 2 3 2 1 2 3 4 5)
+# Add New level(s):
+levels(x) <- c(levels(x), "d")
+table(x) # List the number of factor's level
+
+### Exercices
+structure(1:5, comment = 'I am a comment'
+attributes(structure(1:5, comment = 'I am a comment'))
+str(structure(1:5, comment = 'I am a comment'))
+help("structure")
+structure(1:4, dim = c(2,2))
+
+## Modify the level avec a factor:
+a <- c('a', 'b', 'b')
+l <- factor(letters)
+levels(l) <- rev(levels(l))
+
+l <- factor(c('a', 'b', 'a'))
+levels(l) <- rev(levels(l))
+
+levels(l) <- c('z', 'q')
+
+## factor manipulation
+f2 <- rev(factor(letters))
+table(f2)
+
+f2 <- rev(factor(c('a', 'b', 'b')))
+table(f2)
+
+f3 <- factor(a, levels = c('b', 'a'))
+table(f3)
+
+#summary:
+f1 <- factor(a)
+table(f1) # a: 1 | b: 2
+levels(f1) <- rev(levels(f1))
+table(f1) # a: 2 | b: 1
+## but: 
+f2 <- rev(factor(a))
+table(f2) # a: 1 | b: 2
+## and
+ f3 <- factor(a, levels = c('b', 'a'))
+table(f3) # a: 1 | b: 2 -> No reassignment of level.
+
+# Array and matrices
