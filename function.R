@@ -29,3 +29,10 @@ str(formals(scan)) # List of 22
 which.max(lapply(funs, function(x){length(formals(x))}))
 length(formals(funs[[941]])) # 22
 names(funs[941]) # scan
+
+
+# Which have no argument
+n <- which(sapply(funs, function(x){length(formals(x)) == 0 }))
+names(n) # All functions with no argument.
+mean(unlist(lapply(mget(names(n), inherits = T), is.primitive)))
+# -> 80.97% are primitive functions.
